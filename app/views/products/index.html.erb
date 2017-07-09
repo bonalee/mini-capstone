@@ -1,5 +1,9 @@
 <h1>Delectable Donuts</h1>
 <% @donuts.each do |donut| %>
-<p><img src="<%= donut.image %>"></p>
 <h3><%= donut.name %></h3>
+<p><img src="<%= donut.image %>" height="325" width="325"></p>
+<h4>$ <%= donut.price %></h4>
+<a href="">More about the <%= donut.name %></a>
+<br>
+<br>
 <% end %> 

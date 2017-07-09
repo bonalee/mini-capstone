@@ -2,8 +2,7 @@
 <% @donuts.each do |donut| %>
 <h3><%= donut.name %></h3>
 <p><img src="<%= donut.image %>" height="325" width="325"></p>
-<h4>$ <%= donut.price %></h4>
-<a href="">More about the <%= donut.name %></a>
+<a href="/products/<%= donut.id %>">More about the <%= donut.name %></a>
 <br>
 <br>
 <% end %> 

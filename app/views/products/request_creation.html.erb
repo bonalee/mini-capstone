@@ -1,0 +1,17 @@
+<h1>Request a Donut</h1>
+<%= form_tag "/products", method: "post" do %>
+  <div>
+    Donut Name: <input type="text" name="form_name">
+  </div>
+  <div>
+    Price: <input type="text" name="form_price">
+  </div>
+  <div>
+    Show us a picture: <input type="text" name="form_image">
+  </div>
+  <div>
+    Description: <input type="text" name="form_description">
+  </div>
+
+  <input type="submit" value="Request Donut">
+<% end %>

@@ -21,9 +21,10 @@ class ProductsController < ApplicationController
       image: params[:form_image],
       description: params[:form_description]
       )
-
     donut.save
-    render "new_donut.html.erb"
+
+    redirect_to "/products"
+    flash[:success] = "Donut added!"
   end
 
   def modify_donut
@@ -39,15 +40,17 @@ class ProductsController < ApplicationController
     @donut.price = params[:form_price]
     @donut.image = params[:form_image]
     @donut.description = params[:form_description]
-    
     @donut.save
-    render "update_donut.html.erb"
+
+    redirect_to "/products/#{@donut.id}"
+    flash[:success] = "Donut changed!"
   end
 
   def destroy_donut
     donut_id = params[:id]
     @donut = Product.find_by(id: donut_id)
     @donut.destroy
-    render "destroy.html.erb"
+    redirect_to "/products"
+    flash[:success] = "Donuted deleted!"
   end
 end

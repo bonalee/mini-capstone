@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   get "/products/new" => "products#new_donut"
   post "/products/" => "products#donut_creation"
   get "/products/:id" => "products#donut_show"
-  get "/products/id/edit" => "products#modify_donut"
+  get "/products/:id/edit" => "products#modify_donut"
   patch "/products/:id" => "products#update_donut"
   delete "/products/:id" => "products#destroy_donut"
 end

@@ -1,0 +1,18 @@
+<h1>Request a Donut</h1>
+<%= form_tag "/products/#{@donut.id}", method: "patch" do %>
+  <div>
+    Donut Name: <input type="text" value="<%= @donut.name %>" name="form_name">
+  </div>
+  <div>
+    Price: <input type="text" value="<%= @donut.price %>" name="form_price">
+  </div>
+  <div>
+    Show us a picture: <input type="text" value="<%= @donut.image %>" name="form_image">
+  </div>
+  <div>
+    Description: <input type="text" value="<%= @donut.description %>" name="form_description">
+  </div>
+
+  <input type="submit" value="Update Donut">
+  <a href="/products">Go Back</a>
+<% end %>

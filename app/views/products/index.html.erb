@@ -1,7 +1,9 @@
 <h1>Delectable Donuts</h1>
 <p>Try to resist these scrumptious treats...</p>
-<br>
+<div class="row">
 <% @donuts.each do |donut| %>
+<div class="col-md-4">
+<div class="well">
 <h3><%= donut.name %></h3>
 <p><img src="<%= donut.image %>" height="325" width="325"></p>
 <a href="/products/<%= donut.id %>">More about the <%= donut.name %></a>
@@ -10,5 +12,8 @@
 <br>
 <br>
 <br>
-<% end %> 
+</div>
+</div>
+<% end %>
+</div>
 <a href= "/products/new">Don't see what you like?</a>

@@ -6,3 +6,11 @@ body {
   font-family: Helvetica, "Segoe UI", Calibri, sans-serif;
   background-image: url('brickwall.png');
 } 
+
+.well img {
+  width: auto;
+}
+
+.well {
+  background-color: rgba(255, 255, 255, 0.5);
+}

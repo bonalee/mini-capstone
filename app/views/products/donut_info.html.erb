@@ -1,8 +1,7 @@
-<h1>Delectable Donuts</h1>
 <h2><%= @donut.name %></h2>
 <img src= "<%= @donut.image %>" height="325" width="325">
 <p><%= @donut.description %></p>
-<p>You can get this for only $<%= @donut.price %>!!!</p >
+<p>You can get this for only $<%= number_to_currency(@donut.price) %>!!!</p >
 <br>
 <a href="/products/<%= @donut.id %>/edit">Edit this donut</a>
 <br>

@@ -1,20 +1,20 @@
 class ProductsController < ApplicationController
-  def donut_index
+  def index
     @donuts = Product.all
-    render "index.html.erb"
+    render "donut_index.html.erb"
   end
 
-  def donut_show
+  def show
     donut_id = params[:id]
     @donut = Product.find_by(id: donut_id)
-    render "info.html.erb"
+    render "donut_info.html.erb"
   end
 
-  def new_donut
-    render "request_creation.html.erb"
+  def new
+    render "donut_create.html.erb"
   end
 
-  def donut_creation
+  def create
     donut = Product.new(
       name: params[:form_name],
       price: params[:form_price],
@@ -27,13 +27,13 @@ class ProductsController < ApplicationController
     flash[:success] = "Donut added!"
   end
 
-  def modify_donut
+  def edit
     donut_id = params[:id]
     @donut = Product.find_by(id: donut_id)
-    render "edit_creation.html.erb"
+    render "donut_edit.html.erb"
   end
 
-  def update_donut
+  def update
     donut_id = params[:id]
     @donut = Product.find_by(id: donut_id)
     @donut.name = params[:form_name]
@@ -46,11 +46,11 @@ class ProductsController < ApplicationController
     flash[:success] = "Donut changed!"
   end
 
-  def destroy_donut
+  def destroy
     donut_id = params[:id]
     @donut = Product.find_by(id: donut_id)
     @donut.destroy
     redirect_to "/products"
-    flash[:success] = "Donuted deleted!"
+    flash[:success] = "Donut deleted!"
   end
 end

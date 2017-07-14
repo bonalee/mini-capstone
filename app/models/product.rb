@@ -1,9 +1,13 @@
 class Product < ApplicationRecord
   def tax
-    return price.to_f * 0.09
+    return price * 0.09
   end
 
   def total
-    return price.to_f + tax
+    return price + tax
+  end
+
+  def discounted?
+    price < 100
   end
 end

@@ -3,14 +3,22 @@ class ProductsController < ApplicationController
     sort_attribute = params[:filter_by]
     filter = params[:filter_order]
     discounted = params[:discounted]
-
-    if sort_attribute && filter
-      @donuts = Product.order(sort_attribute => filter)        
-    elsif discounted
-      @donuts = Product.where("price = 1")
+    search = params[:search_name]
+    
+    if search
+      @donuts = Product.all.where("name ILIKE ?", "%"+ search +"%")
     else
-      @donuts = Product.order(sort_attribute)
+      @donuts = Product.all
+
+      if sort_attribute && filter
+        @donuts = Product.order(sort_attribute => filter)        
+      elsif discounted
+        @donuts = Product.where("price = 1")
+      else
+        @donuts = Product.order(sort_attribute)
+      end
     end
+
     render "donut_index.html.erb"
   end
 
@@ -67,11 +75,5 @@ class ProductsController < ApplicationController
     @donut.destroy
     redirect_to "/products"
     flash[:success] = "Donut deleted!"
-  end
-
-  def search_for
-    search = params[:search]
-    @donuts = Product.all.where("name LIKE ?", "%"+ search +"%")
-    render "donut_index.html.erb"
   end
 end

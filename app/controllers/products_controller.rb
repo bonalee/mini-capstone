@@ -2,22 +2,26 @@ class ProductsController < ApplicationController
   def index
     sort_attribute = params[:filter_by]
     filter = params[:filter_order]
-    discounted = params[:discounted_filter]
+    discounted = params[:discounted]
 
     if sort_attribute && filter
       @donuts = Product.order(sort_attribute => filter)        
     elsif discounted
       @donuts = Product.where("price = 1")
     else
-      @donuts = Product.all
+      @donuts = Product.order(sort_attribute)
     end
-
     render "donut_index.html.erb"
   end
 
   def show
     donut_id = params[:id]
-    @donut = Product.find_by(id: donut_id)
+
+    if donut_id == "random"
+      @donut = Product.order('RANDOM()').first
+    else
+      @donut = Product.find_by(id: donut_id)
+    end
     render "donut_info.html.erb"
   end
 
@@ -63,5 +67,11 @@ class ProductsController < ApplicationController
     @donut.destroy
     redirect_to "/products"
     flash[:success] = "Donut deleted!"
+  end
+
+  def search_for
+    search = params[:search]
+    @donuts = Product.all.where("name LIKE ?", "%"+ search +"%")
+    render "donut_index.html.erb"
   end
 end

@@ -8,6 +8,6 @@ class Product < ApplicationRecord
   end
 
   def discounted?
-    price < 100
+    price < 1
   end
 end

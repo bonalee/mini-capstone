@@ -1,6 +1,17 @@
 class ProductsController < ApplicationController
   def index
-    @donuts = Product.all
+    sort_attribute = params[:filter_by]
+    filter = params[:filter_order]
+    discounted = params[:discounted_filter]
+
+    if sort_attribute && filter
+      @donuts = Product.order(sort_attribute => filter)        
+    elsif discounted
+      @donuts = Product.where("price = 1")
+    else
+      @donuts = Product.all
+    end
+
     render "donut_index.html.erb"
   end
 

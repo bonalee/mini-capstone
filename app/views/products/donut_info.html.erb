@@ -1,7 +1,8 @@
 <h2><%= @donut.name %></h2>
-<img src= "<%= @donut.image %>" height="325" width="325">
+<img src= "<%= @donut.images.url %>" height="325" width="325">
 <p><%= @donut.description %></p>
 <p><%= number_to_currency(@donut.price) %></p >
+<p>Made by <%= @donut.supplier.name %> (whose email address is <%= @donut.supplier.email %>)</p>
 <br>
 <a href="/products/<%= @donut.id %>/edit">Edit this donut</a>
 <br>

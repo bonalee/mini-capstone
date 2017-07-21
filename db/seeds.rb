@@ -1,7 +1,11 @@
-# This file should contain all the record creation needed to seed the database with its default values.
-# The data can then be loaded with the rails db:seed command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
+Product.create!([
+  {name: "Triple Chocolate", price: "1.0", image: "http://www.onceuponarecipeblog.com/wp-content/uploads/2013/03/DSC_0820.jpg", description: "Chocolate donut dough with chocolate glazed sprinkled with chocolate sprinkles.", stock_status: nil},
+  {name: "Chocolate Long John", price: "1.0", image: "https://msbakery.com/wp-content/uploads/2015/04/lon-jon-choc.jpg", description: "A bar-shaped, yeast-risen pastry often coated with glaze or icing.", stock_status: nil},
+  {name: "Jelly-Filled", price: "1.25", image: "http://thesweetandsimplekitchen.com/wp-content/uploads/2016/03/IMG_9872.jpg", description: "A jelly filled pastry", stock_status: nil},
+  {name: "French Cruller", price: "1.5", image: "http://ofbatteranddough.com/wp-content/uploads/2017/04/French-cruller-doughnut-recipe-pin-14.jpg", description: "A fried pastry often made from a rectangle of dough, with a cut made in the middle that allows it to be pulled over and through itself producing twists in the side of the pastry.", stock_status: nil},
+  {name: "Apple Fritter", price: "1.75", image: "http://www.zestuous.com/wp-content/uploads/2014/06/bacon-apple-fritter.png", description: "A beautiful blend of spiced apples and batter or breading glazed over in cinnamon sugar", stock_status: nil},
+  {name: "Chocolate Donut", price: "1.0", image: "http://www.crunchycreamysweet.com/wp-content/uploads/2016/02/chocolate-donuts-1.jpg", description: "Homemade, soft donut dough texture glazed with a ooey, gooey chocolate glaze", stock_status: nil},
+  {name: "Pączki", price: "2.5", image: "http://www.polamjournal.com/Library/Holidays/paczki/Paczki.jpg", description: "Pączki are pastries traditional to Polish cuisine. They are similar to doughnuts.", stock_status: nil},
+  {name: "Strawberry Sprinkled", price: "1.0", image: "http://www.howsweeteats.com/wp-content/uploads/2015/06/strawberry-donuts-I-howsweeteats.com-6.jpg", description: "Delicious, homemade donut dough glazed with warm, sweet strawberry glaze sprinkled with colorful sprinkles", stock_status: nil},
+  {name: "Boston Creme", price: "1.5", image: "https://s-media-cache-ak0.pinimg.com/736x/0f/24/dd/0f24ddb183c2c9ff2d692a59d089443c.jpg", description: "A yellow butter cake that is filled with custard or cream and topped with chocolate glaze.", stock_status: nil}
+])

@@ -1,5 +1,12 @@
 class ProductsController < ApplicationController
   def index
+    if session[:count] == nil
+      session[:count] = 0
+    else
+      session[:count] += 1
+    end
+    @visit_count = session[:count]
+
     sort_attribute = params[:filter_by]
     filter = params[:filter_order]
     discounted = params[:discounted]
@@ -34,18 +41,22 @@ class ProductsController < ApplicationController
   end
 
   def new
+    @suppliers = Supplier.all
     render "donut_create.html.erb"
   end
 
   def create
-    donut = Product.new(
+    @donut = Product.create(
       name: params[:form_name],
       price: params[:form_price],
-      image: params[:form_image],
-      description: params[:form_description]
+      description: params[:form_description],
+      supplier_id: params[:supplier_id]
       )
-    donut.save
 
+    Image.create(
+      url: params[:image],
+      product_id: @donut.id
+      )
     redirect_to "/products"
     flash[:success] = "Donut added!"
   end
@@ -61,7 +72,6 @@ class ProductsController < ApplicationController
     @donut = Product.find_by(id: donut_id)
     @donut.name = params[:form_name]
     @donut.price = params[:form_price]
-    @donut.image = params[:form_image]
     @donut.description = params[:form_description]
     @donut.save
 

@@ -1,12 +1,18 @@
-<div class="row">
-  <% @donuts.each do |donut| %>
-    <div class="col-md-4">
-      <div class="well">
-        <h3><%= donut.name %></h3>
-        <p><img src="<%= donut.image %>" height="275" width="275"></p>
-        <a href="/products/<%= donut.id %>">More about the <%= donut.name %></a>
-      </div>
+<p>You have visited this page <%= @visit_count %> times.</p>
+
+  <section>  
+    <div class="row">
+      <% @donuts.each do |donut| %>
+        <div class="col-md-4">
+          <div class="col-sm-4">
+            <h3 class="donut_header"><%= donut.name %></h3>
+               <a href="/products/<%= donut.id %>" title="View Donut"><img src="<%= donut.images.first.url %>" alt="<%= donut.name %>"></a>
+
+            <a href="/products/<%= donut.id %>">More about the <%= donut.name %></a>
+          </div>
+        </div>
+      <% end %>
     </div>
-  <% end %>
-</div>
+  </section>
+
 <a href= "/products/new">Don't see what you like?</a>

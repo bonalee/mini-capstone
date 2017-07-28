@@ -3,6 +3,14 @@
     <p><%= @donut.description %></p>
     <p><%= number_to_currency(@donut.price) %></p >
   <br>
+    <%= form_tag "/products/#{@donut.id}", method: "patch" do %>
+      <input type="text" class="form-control" name="user_id">
+      <input type="text" class="form-control" name="product_id">
+      <input type="text" class="form-control" name="quantity">
+      <br>
+      <input type="submit" value="Buy Now">
+    <% end %>
+  <br>
     <a href="/products/<%= @donut.id %>/edit">Edit this donut</a>
   <br>
   <br>

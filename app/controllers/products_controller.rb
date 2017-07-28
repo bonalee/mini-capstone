@@ -11,7 +11,7 @@ class ProductsController < ApplicationController
     filter = params[:filter_order]
     discounted = params[:discounted]
     search = params[:search_name]
-    
+
     if search
       @donuts = Product.all.where("name ILIKE ?", "%"+ search +"%")
     else
@@ -24,6 +24,13 @@ class ProductsController < ApplicationController
       else
         @donuts = Product.order(sort_attribute)
       end
+    end
+    
+    @categories = Category.all 
+    category_name = params[:category_name]
+    if category_name
+      category = Category.find_by(name: category_name)
+      @donuts = category.products
     end
 
     render "donut_index.html.erb"

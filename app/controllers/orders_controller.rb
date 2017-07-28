@@ -1,14 +1,13 @@
 class OrdersController < ApplicationController
-  def new
-    render ''
-  end
-
   def create
-    order = Order.new(
+    @order = Order.create(
+      product_id: params[:product_id],
       quantity: params[:quantity],
-      subtotal: params[:subtotal],
-      tax: params[:tax],
-      total: params[:total]
+      subtotal: 0,
+      tax: 0,
+      total: 0
     )
+    redirect_to "/products/<%= @donut.id %>"
+    flash[:success] = "Cart has been updated!"
   end
 end

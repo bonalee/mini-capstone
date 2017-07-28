@@ -15,6 +15,5 @@ Rails.application.routes.draw do
   post "/login" => "sessions#create"
   get "/logout" => "sessions#destroy"
 
-  get "/cart" => "orders#new"
-  post "/checkout" => "orders#create"
+  post "/orders" => "orders#create"
 end

@@ -8,16 +8,18 @@
       <input type="text" class="form-control" name="product_id">
       <input type="text" class="form-control" name="quantity">
       <br>
-      <input type="submit" value="Buy Now">
+      <input type="submit" value="Add to Cart">
     <% end %>
   <br>
-    <a href="/products/<%= @donut.id %>/edit">Edit this donut</a>
+    <%= form_tag "/products/#{@donut.id}", method: "patch" do %>
+      <input type="submit" value="Edit donut">
+    <% end %>
+    <%= form_tag "/products/#{@donut.id}", method: "delete" do %>
+      <input type="submit" value="Delete donut">
+    <% end %>
   <br>
   <br>
     <a href="/products">Back to all Donuts</a>
   <br>
   <br>
-  <br>
-    <%= form_tag "/products/#{@donut.id}", method: "delete" do %>
-      <input type="submit" value="Delete donut">
-    <% end %>
+  <br

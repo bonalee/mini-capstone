@@ -1,4 +1,6 @@
 class OrdersController < ApplicationController
+  before_action :authenticate_user!
+  
   def create
     @order = Order.create(
       product_id: params[:product_id],

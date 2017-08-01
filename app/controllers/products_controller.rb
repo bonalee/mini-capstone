@@ -1,4 +1,6 @@
 class ProductsController < ApplicationController
+  before_action :authenticate_admin!, except: [:index, :show]
+
   def index
     if session[:count] == nil
       session[:count] = 0
@@ -33,7 +35,7 @@ class ProductsController < ApplicationController
       @donuts = category.products
     end
 
-    render "donut_index.html.erb"
+    render "index.html.erb"
   end
 
   def show
@@ -44,12 +46,12 @@ class ProductsController < ApplicationController
     else
       @donut = Product.find_by(id: donut_id)
     end
-    render "donut_info.html.erb"
+    render "show.html.erb"
   end
 
   def new
     @suppliers = Supplier.all
-    render "donut_create.html.erb"
+    render "create.html.erb"
   end
 
   def create
@@ -71,7 +73,7 @@ class ProductsController < ApplicationController
   def edit
     donut_id = params[:id]
     @donut = Product.find_by(id: donut_id)
-    render "donut_edit.html.erb"
+    render "edit.html.erb"
   end
 
   def update
